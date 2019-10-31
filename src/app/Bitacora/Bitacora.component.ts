@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ServiceService } from './../Service.service';
+
 @Component({
   selector: 'app-Bitacora',
   templateUrl: './Bitacora.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BitacoraComponent implements OnInit {
 
-  constructor() { }
+  constructor(private servi: ServiceService) { }
 
   ngOnInit() {
+  }
+
+  getMostrar() {
+    this.servi.getApi();
   }
 
 }
