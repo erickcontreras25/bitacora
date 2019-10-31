@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServiceService } from './../Service.service';
+import { Categorias } from 'src/Categorias';
 
 @Component({
   selector: 'app-Bitacora',
@@ -9,13 +10,20 @@ import { ServiceService } from './../Service.service';
 })
 export class BitacoraComponent implements OnInit {
 
+  categ: any;
+
   constructor(private servi: ServiceService) { }
 
   ngOnInit() {
   }
 
   getMostrar() {
-    this.servi.getApi();
-  }
+    this.servi.getApi().subscribe(
+      (data: any) => {
+        this.categ = data;
+        console.log(this.categ);
+      }
+    );
+}
 
 }

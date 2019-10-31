@@ -9,9 +9,7 @@ export class ServiceService {
 constructor(private http: HttpClient) { }
 
 getApi() {
-  return this.http.get('http://localhost:5000/api/Category').subscribe(response => {
-    console.log(response);
-  });
+  return this.http.get('http://localhost:5000/api/Category');
 }
 
 }

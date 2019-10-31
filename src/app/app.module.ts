@@ -7,6 +7,7 @@ import { BitacoraComponent } from './Bitacora/Bitacora.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceService } from './Service.service';
 import { Services } from '@angular/core/src/view';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
    declarations: [
