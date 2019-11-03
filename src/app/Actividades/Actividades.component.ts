@@ -15,6 +15,7 @@ export class ActividadesComponent implements OnInit {
   acts: Actividades[] = [];
   act: Actividades;
   aux: number;
+  categs: Categorias[] = [];
 
   constructor(private servi: ServiceService) { }
 
@@ -74,7 +75,17 @@ eliminarAct(): void {
 }
 
 
-
+getMostra() {
+  this.servi.getApi().subscribe(
+    (data: Categorias[]) => {
+      this.categs = data;
+      console.log(this.categs);
+    },
+    (error) => {
+      console.log('error');
+    }
+  );
+}
 
 
 

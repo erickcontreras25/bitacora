@@ -1,109 +1,119 @@
-<p>
-  Actividades works!
-</p>
-<a [routerLink]="['']">Inicio</a>
-
-<!--MOSTRAR ACTIVIDADES-->
-<br>
-<br>
-<div>
-  <button type="button" (click)="getMostrar()">Mostrar Actividades</button>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Actividad</th>
-      <th scope="col">Categoria</th>
-      <th scope="col">Hora Inicial</th>
-      <th scope="col">Hora Final</th>
-      <th scope="col">Categoria Id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let c of acts">
-        <td>{{c.id}}</td>
-        <td>{{c.fecha }}</td>
-        <td>{{c.activida}}</td>
-        <td>{{c.categoria}}</td>
-        <td>{{c.horaInicial | date:'mediumTime'}}</td>
-        <td>{{c.horaFinal | date:'mediumTime'}}</td>
-        <td>{{c.categoryId}}</td>
-    </tr>
-  </tbody>
-</table>
-
-<br><br>
-
-
-<!-- INSERTAR-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
-        </div>
-        <div class="modal-body">
-          <form class="form-inline">
-    <input type="datetime-local" [(ngModel)]="act.fecha " name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
-    <input type="text" [(ngModel)]="act.activida" name="Actividad" class="form-control mb-2 mr-sm-2" placeholder="Actividad">
-    <input type="text" [(ngModel)]="act.categoria" name="Categoria" class="form-control mb-2 mr-sm-2" placeholder="Categoria">
-    <input type="datetime-local" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
-    <input type="datetime-local" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
-    <input type="number" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
-
-    
-  </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" (click)="agregarAct()" class="btn btn-primary">Guardar</button>
-        </div>
+<div class="container">
+    <a [routerLink]="['']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inicio</a>
+  </div>
+  <br>
+  <div class="container">
+    <a [routerLink]="['/Category']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Categorias</a>
+  </div>
+  <br>  
+  
+  <!-- Mostrar-->
+  <div class="row">         
+      <div class="col-6">
+          <div class="card" id=card-lista>
+              <div class="card-header">
+                  <h4>Mostrar Actividades</h4>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                     <div>
+                         <button type="button" (click)="getMostrar()" class="btn btn-success btn-block">Mostrar Actividades</button>
+                       </div>
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Fecha</th>
+                                  <th>Actividad</th>
+                                  <th>Categoría</th>
+                                  <th>Hora Inicial</th>
+                                  <th>Hora final</th>
+                                  <th>Categoria</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let c of acts">
+                                  <td >{{c.id}}</td>
+                                  <td>{{c.fecha | date: 'yyyy-MM-dd hh:mm:ss'}}</td>
+                                  <td>{{c.activida}}</td>
+                                  <td>{{c.categoria}}</td>
+                                  <td>{{c.horaInicial | date:'mediumTime'}}</td>
+                                  <td>{{c.horaFinal | date:'mediumTime'}}</td>
+                                  <td>{{c.categoryId}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <!--INSERTAR-->
+                      <div class="col">
+                       <div class="card">
+                           <div class="card-header">
+                               <h4>Modificar actividades</h4>
+                           </div>
+                           <div class="card-body">
+                               
+                             <input type="number" [(ngModel)]="act.id " name="Id" class="form-control mb-2 mr-sm-2" placeholder="Id">
+                             <input type="datetime-local" [(ngModel)]="act.fecha " name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
+                             <input type="text" [(ngModel)]="act.activida" name="Actividad" class="form-control mb-2 mr-sm-2" placeholder="Actividad">
+                             <input type="text" [(ngModel)]="act.categoria" name="Categoria" class="form-control mb-2 mr-sm-2" placeholder="Categoria">
+                             <input type="datetime-local" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
+                             <input type="datetime-local" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
+                             <input type="number" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
+                                   <div class="container">
+                                       <button type="button" (click)="agregarAct() " class="btn btn-success btn-block">            
+                                           Guardar
+                                       </button>                    
+                                   </div>
+                               
+                           </div>
+                       </div>
+                   </div>
+                   <!--ACTUALIZAR-->
+                   <div class="col">
+                     <div class="card">
+                         <div class="card-header">
+                             <h4>Agregar categorías</h4>
+                         </div>
+                         <div class="card-body">
+                             
+                               <input type="datetime-local" [(ngModel)]="act.fecha " name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
+                               <input type="text" [(ngModel)]="act.activida" name="Actividad" class="form-control mb-2 mr-sm-2" placeholder="Actividad">
+                               <input type="text" [(ngModel)]="act.categoria" name="Categoria" class="form-control mb-2 mr-sm-2" placeholder="Categoria">
+                               <input type="datetime-local" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
+                               <input type="datetime-local" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
+                               <input type="number" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
+                                 <div class="container">
+                                     <button type="button" (click)="agregarAct() " class="btn btn-success btn-block">            
+                                         Guardar
+                                     </button>                    
+                                 </div>
+                             
+                         </div>
+                     </div>
+                 </div>
+ <br><br>
+ <!-- Eliminar-->
+ <div class="col">
+   <div class="card">
+       <div class="card-header">
+           <h4>Eliminar</h4>
+       </div>
+       <div class="form-group">
+       <div class="card-body">
+                <input type="number" [(ngModel)]="aux" class="form-control mb-2 mr-sm-2" placeholder="Eliminar">
+               </div>
+               <div class="container">
+                   <button type="button" (click)="eliminarAct()" class="btn btn-success btn-block">            
+                       Eliminar
+                   </button>                    
+               </div>
+           </div>
+          
+       </div>
+   
+ </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
-
-
-
-
-  <br><br>
-<!--ACTUALIZAR-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
-        </div>
-        <div class="modal-body">
-          <form class="form-inline">
-    <input type="number" [(ngModel)]="act.id " name="Id" class="form-control mb-2 mr-sm-2" placeholder="Id">
-    <input type="datetime-local" [(ngModel)]="act.fecha " name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
-    <input type="text" [(ngModel)]="act.activida" name="Actividad" class="form-control mb-2 mr-sm-2" placeholder="Actividad">
-    <input type="text" [(ngModel)]="act.categoria" name="Categoria" class="form-control mb-2 mr-sm-2" placeholder="Categoria">
-    <input type="datetime-local" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
-    <input type="datetime-local" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
-    <input type="number" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
-
-    
-  </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" (click)="agregarAct()" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <br><br>
-<!-- Eliminar-->
-<div class="modal-body">
-<input type="number" [(ngModel)]="aux" class="form-control mb-2 mr-sm-2" placeholder="Eliminar">
-  </div>
-<div>
-    <button (click)="eliminarAct()">eliminar</button>
-</div>
-
-    
+ 

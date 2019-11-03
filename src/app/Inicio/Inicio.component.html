@@ -1,9 +1,18 @@
-<p>
-  Inicio works!
-</p>
 
-<div>
-  <a [routerLink]="['/Category']">Agregar</a>
-  <a [routerLink]="['/Actividades']">Ver Actividades</a>
+<div class="container" style="background-color:rgb(170, 141, 47);">
+    <div class="row">
+      <div class="card-body">
+        <form >
+          <h1 class="h3 mb-3 font-weight-normal" style="color:rgb(0, 0, 255);">Bitácora</h1>
+          <div class="container">
+            <a [routerLink]="['/Category']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar Categoría</a>
+          </div>
+          <br>
+          <div class="container">
+            <a [routerLink]="['/Actividades']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Actividades</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   
-</div>

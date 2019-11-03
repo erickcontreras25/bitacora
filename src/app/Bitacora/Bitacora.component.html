@@ -1,83 +1,105 @@
-<p>
-  Bitacora works!
-</p>
-<a [routerLink]="['']">Inicio</a>
-
-
+<div class="container">
+    <a [routerLink]="['']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inicio</a>
+  </div>
+  <br>
+  <div class="container">
+    <a [routerLink]="['/Actividades']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Actividades</a>
+  </div>
+  <br>
 <!-- INSERTAR-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline">
-  <input type="text" [(ngModel)]="categ.actividadName" name="actividadName" class="form-control mb-2 mr-sm-2" placeholder="Categorias">
-  
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="agregarCateg()" class="btn btn-primary">Guardar</button>
-      </div>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h4>Agregar Categoría</h4>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                       <input type="text" [(ngModel)]="categ.actividadName" name="actividadName" class="form-control mb-2 mr-sm-2" placeholder="Categorias">
+                    </div>
+                    <div class="container">
+                        <button type="button" (click)="agregarCateg()" class="btn btn-success btn-block">            
+                            Guardar
+                        </button>                    
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
+<!--PUT-->
+<div class="col">
+   <div class="card">
+       <div class="card-header">
+           <h4>Actualizar categorias</h4>
+       </div>
+       <div class="card-body">
+           <form>
+               <div class="form-group">
+                <input type="number" [(ngModel)]="categ.id" name="id" class="form-control mb-2 mr-sm-2" placeholder="Id">
+                 <input type="text" [(ngModel)]="categ.actividadName" name="actividadName" class="form-control mb-2 mr-sm-2" placeholder="Categorias"> 
+               </div>
+               <div class="container">
+                   <button type="button" (click)="actualizarCateg()" class="btn btn-success btn-block">            
+                       Guardar
+                   </button>                    
+               </div>
+           </form>
+       </div>
+   </div>
+</div>
+<!--TERMINA PUT-->
+
+<!--DELETE-->
+<div class="col">
+   <div class="card">
+       <div class="card-header">
+           <h4>Borrar</h4>
+       </div>
+       <div class="form-group">
+       <div class="card-body">
+                <input type="number" [(ngModel)]="elimi" class="form-control mb-2 mr-sm-2" placeholder="Eliminar">
+               </div>
+               <div class="container">
+                   <button type="button" (click)="eliminarCateg()" class="btn btn-success btn-block">            
+                       Borrar
+                   </button>                    
+               </div>
+           </div>
+          
+       </div>
+   
 </div>
 
-<br><br>
-<!--ACTUALIZAR-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Actualizar Categoria</h5>
-        </div>
-        <div class="modal-body">
-          <form class="form-inline">
-    <input type="number" [(ngModel)]="categ.id" name="id" class="form-control mb-2 mr-sm-2" placeholder="Id">
-    <input type="text" [(ngModel)]="categ.actividadName" name="actividadName" class="form-control mb-2 mr-sm-2" placeholder="Categorias">
+<!--TERMINA DELETE-->
     
-  </form>
+    <div class="col-6">
+        <div class="card" id=card-lista>
+            <div class="card-header">
+                <h4>Mostrar Categorias</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                   <div>
+                       <button type="button" (click)="getMostrar()" class="btn btn-success btn-block">Mostrar Categorias</button>
+                     </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre de la actividad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of categs">
+                                <td >{{c.id}}</td>
+                                <td>{{ c.actividadName }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" (click)="actualizarCateg()" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
     </div>
-  </div>
-
-
-
-<br><br>
-<!-- Eliminar-->
-<div class="modal-body">
-<input type="number" [(ngModel)]="elimi" class="form-control mb-2 mr-sm-2" placeholder="Eliminar">
-  </div>
-<div>
-    <button (click)="eliminarCateg()">eliminar</button>
 </div>
 
-
-
-
-
-<!--MOSTRAR CATEGORIAS-->
-<br>
-<br>
-<div>
-  <button type="button" (click)="getMostrar()">Mostrar Categorias</button>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre Actividad</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let c of categs">
-        <td>{{c.id}}</td>
-        <td>{{c.actividadName}}</td>
-    </tr>
-  </tbody>
-</table>
