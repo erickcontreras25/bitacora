@@ -1,4 +1,5 @@
 export class Actividades {
+    id: number;
     fecha: Date;
     activida: string;
     categoria: string;

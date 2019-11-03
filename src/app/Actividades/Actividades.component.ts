@@ -14,6 +14,7 @@ export class ActividadesComponent implements OnInit {
 
   acts: Actividades[] = [];
   act: Actividades;
+  aux: number;
 
   constructor(private servi: ServiceService) { }
 
@@ -41,8 +42,40 @@ agregarAct(): void {
       this.acts.push(this.act);
       //this.categ = new Categorias('');
     },
-    (error) => {}
+    (error) => {
+      console.log(error);
+    }
   );
 }
+
+actualizarAct(): void {
+  console.log(this.aux);
+  this.servi.putActi(this.act).subscribe(
+    res => {
+      this.acts.push(this.act);
+    }
+  );
+}
+
+
+
+
+eliminarAct(): void {
+  console.log(this.aux);
+  this.servi.deleteActi(this.aux).subscribe(
+    (data: Actividades[]) => {
+      this.acts = data;
+    },
+    (error) => {
+      console.log('error');
+    }
+  );
+  console.log('Eliminado');
+}
+
+
+
+
+
 
 }

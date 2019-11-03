@@ -24,7 +24,7 @@
   <tbody>
     <tr *ngFor="let c of acts">
         <td>{{c.id}}</td>
-        <td>{{c.fecha | date: 'yyyy-MM-dd hh:mm:ss'}}</td>
+        <td>{{c.fecha }}</td>
         <td>{{c.activida}}</td>
         <td>{{c.categoria}}</td>
         <td>{{c.horaInicial | date:'mediumTime'}}</td>
@@ -35,6 +35,8 @@
 </table>
 
 <br><br>
+
+
 <!-- INSERTAR-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -44,12 +46,12 @@
         </div>
         <div class="modal-body">
           <form class="form-inline">
-    <input type="datetime-local" [(ngModel)]="act.fecha" name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
+    <input type="datetime-local" [(ngModel)]="act.fecha " name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
     <input type="text" [(ngModel)]="act.activida" name="Actividad" class="form-control mb-2 mr-sm-2" placeholder="Actividad">
     <input type="text" [(ngModel)]="act.categoria" name="Categoria" class="form-control mb-2 mr-sm-2" placeholder="Categoria">
-    <input type="time" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
-    <input type="time" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
-    <input type="text" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
+    <input type="datetime-local" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
+    <input type="datetime-local" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
+    <input type="number" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
 
     
   </form>
@@ -64,6 +66,44 @@
 
 
 
+  <br><br>
+<!--ACTUALIZAR-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline">
+    <input type="number" [(ngModel)]="act.id " name="Id" class="form-control mb-2 mr-sm-2" placeholder="Id">
+    <input type="datetime-local" [(ngModel)]="act.fecha " name="Fecha" class="form-control mb-2 mr-sm-2" placeholder="Fecha">
+    <input type="text" [(ngModel)]="act.activida" name="Actividad" class="form-control mb-2 mr-sm-2" placeholder="Actividad">
+    <input type="text" [(ngModel)]="act.categoria" name="Categoria" class="form-control mb-2 mr-sm-2" placeholder="Categoria">
+    <input type="datetime-local" [(ngModel)]="act.horaInicial" name="Hora Inicial" class="form-control mb-2 mr-sm-2" placeholder="Hpra Inicial">
+    <input type="datetime-local" [(ngModel)]="act.horaFinal" name="Hora Final" class="form-control mb-2 mr-sm-2" placeholder="Hora Final">
+    <input type="number" [(ngModel)]="act.categoryId" name="Categoria Id" class="form-control mb-2 mr-sm-2" placeholder="Categoria Id">
+
+    
+  </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="agregarAct()" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-<input type="datetime-local" >
+
+
+  <br><br>
+<!-- Eliminar-->
+<div class="modal-body">
+<input type="number" [(ngModel)]="aux" class="form-control mb-2 mr-sm-2" placeholder="Eliminar">
+  </div>
+<div>
+    <button (click)="eliminarAct()">eliminar</button>
+</div>
+
+    

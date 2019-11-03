@@ -36,5 +36,12 @@ postActi(actividad: Actividades) {
   return this.http.post('http://localhost:5000/api/Actividad', actividad);
 }
 
+deleteActi(iden: number) {
+  return this.http.delete(`http://localhost:5000/api/Actividad/${iden}`);
+}
+
+putActi(actividad: Actividades) {
+  return this.http.put(`http://localhost:5000/api/Actividad/${actividad.id}`, actividad);
+}
 
 }
