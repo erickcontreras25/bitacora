@@ -26,7 +26,8 @@ import { InicioComponent } from './Inicio/Inicio.component';
       FormsModule,
       RouterModule.forRoot([
          {path: '', component: InicioComponent},
-         {path: 'Category', component: BitacoraComponent}
+         {path: 'Category', component: BitacoraComponent},
+         {path: 'Actividades', component: ActividadesComponent}
       ])
    ],
    providers: [

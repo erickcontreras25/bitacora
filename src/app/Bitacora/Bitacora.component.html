@@ -1,15 +1,10 @@
 <p>
   Bitacora works!
 </p>
+<a [routerLink]="['']">Inicio</a>
 
-<div class="text-right " >
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Agregar
-  </button>
-  
-</div>
 
-<!-- Modal-->
+<!-- INSERTAR-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -20,19 +15,53 @@
         <form class="form-inline">
   <input type="text" [(ngModel)]="categ.actividadName" name="actividadName" class="form-control mb-2 mr-sm-2" placeholder="Categorias">
   
-
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" (click)="agregarCateg()" class="btn btn-primary">Save changes</button>
+        <button type="button" (click)="agregarCateg()" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
 </div>
 
+<br><br>
+<!--ACTUALIZAR-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Categoria</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline">
+    <input type="number" [(ngModel)]="categ.id" name="id" class="form-control mb-2 mr-sm-2" placeholder="Id">
+    <input type="text" [(ngModel)]="categ.actividadName" name="actividadName" class="form-control mb-2 mr-sm-2" placeholder="Categorias">
+    
+  </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="actualizarCateg()" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
+<br><br>
+<!-- Eliminar-->
+<div class="modal-body">
+<input type="number" [(ngModel)]="elimi" class="form-control mb-2 mr-sm-2" placeholder="Eliminar">
+  </div>
+<div>
+    <button (click)="eliminarCateg()">eliminar</button>
+</div>
+
+
+
+
+
+<!--MOSTRAR CATEGORIAS-->
 <br>
 <br>
 <div>
@@ -41,11 +70,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Nombre Actividad</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let c of categs">
+        <td>{{c.id}}</td>
         <td>{{c.actividadName}}</td>
     </tr>
   </tbody>
